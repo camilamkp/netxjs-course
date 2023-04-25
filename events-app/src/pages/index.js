@@ -5,7 +5,7 @@ import styles from '@/styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home({ data }) {
   return (
     <div className={ styles.container }>
       <Head>
@@ -25,27 +25,38 @@ export default function Home() {
       </header>
 
       <main className={` ${styles.main} `}>
+
+        { 
+          data.map( ev =>
+          (
+            <a key={ ev.id } href={ `/events/${ ev.id }` }>
+              <Image width={ 600 } height={ 400 } alt={ ev.title } src={ ev.image } />
+              <h2>{ ev.title }</h2>
+              <p>{ ev.description }</p>
+            </a>
+          ) ) 
+        }
         
-        <a href=''>
+        {/* <a href='/events/london'>
           <h2>Events in London</h2>
           <p>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et commododod conseqiuat.
           </p>
         </a>
 
-        <a href=''>
+        <a href='/events/sanfrancisco'>
           <h2>Events in San Francisco</h2>
           <p>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et commododod conseqiuat.
           </p>
         </a>
 
-        <a href=''>
+        <a href='/events/barcelona'>
           <h2>Events in Barcelona</h2>
           <p>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et commododod conseqiuat.
           </p>
-        </a>
+        </a> */}
 
       </main>
       <footer className={ styles.footer }>
@@ -53,4 +64,16 @@ export default function Home() {
       </footer>
     </div>
   )
+}
+
+
+export async function getServerSideProps()
+{
+  const { events_categories } = await import('../data/data.json');
+
+  return{
+    props:{
+      data: events_categories,
+    }
+  };
 }
