@@ -32,7 +32,7 @@ const Header = () =>
 
           </nav>
         </div>
-          <p className='title'>first Project with nextjs</p>
+          <p className='title'>My first nextjs Project</p>
       </div>
     </header>
   )

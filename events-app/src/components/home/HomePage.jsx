@@ -10,7 +10,7 @@ const HomePage = ({ data }) => {
             <Link  key={ ev.id } href={ `/events/${ ev.id }` } passHref legacyBehavior>
             <a className='card'>
               <div className='image'>
-                <Image width={ 600 } height={ 400 } alt={ ev.title } src={ ev.image } />
+                <Image width={ 400 } height={ 300 } alt={ ev.title } src={ ev.image } />
               </div>
                 <div className='card-content'>
                   <h2>{ ev.title }</h2>
