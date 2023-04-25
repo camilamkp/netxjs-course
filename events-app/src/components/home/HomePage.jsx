@@ -3,20 +3,24 @@ import Image from 'next/image';
 
 const HomePage = ({ data }) => {
   return (
-    <main>
+    <div className='home-body'>
         { 
         data.map( ev =>
         (
-            <Link key={ ev.id } href={ `/events/${ ev.id }` } passHref legacyBehavior>
-            <a>
+            <Link  key={ ev.id } href={ `/events/${ ev.id }` } passHref legacyBehavior>
+            <a className='card'>
+              <div className='image'>
                 <Image width={ 600 } height={ 400 } alt={ ev.title } src={ ev.image } />
-                <h2>{ ev.title }</h2>
-                <p>{ ev.description }</p>
+              </div>
+                <div className='card-content'>
+                  <h2>{ ev.title }</h2>
+                  <p>{ ev.description }</p>
+                </div>
             </a>
             </Link>
         ) ) 
         }
-    </main>
+    </div>
   )
 }
 
