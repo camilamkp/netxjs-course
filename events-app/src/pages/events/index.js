@@ -1,11 +1,8 @@
+import AllEvents from '../../components/events/EventsPage';
 
-const EventsPage = () =>
+const EventsPage = ({ data }) =>
 {
-  return (
-    <>
-    <EventsPage />
-    </>
-  )
+  return <AllEvents data={data} />
 }
 
 export default EventsPage;
